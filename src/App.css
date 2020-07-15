@@ -2,6 +2,39 @@
   text-align: center;
 }
 
+h1 {
+  color: #E35F21
+}
+
+/* img {
+  width: 80px;
+
+} */
+
+#img1 {
+  width: 800px;
+}
+
+.img2 {
+  width: 80%;
+}
+
+form {
+  margin: 20px auto;
+  width: 320px;
+  color: #E35F21
+}
+p {
+  font-size: 20px;
+}
+
+input {
+  padding: 100px;
+  font-size:inherit;
+   width: 180px;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
