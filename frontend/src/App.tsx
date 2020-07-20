@@ -34,7 +34,7 @@ function App() {
       <h3>Encripted Link</h3>
     
       {/*
-       <input type= "upload" placeholder="Upload"></input>
+       
        <input type= "password" placeholder="Password"></input>
       <input type= "Expr" placeholder= "expiration"></input> */}
     </div>
