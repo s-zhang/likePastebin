@@ -39,7 +39,7 @@ function App() {
             <input type="radio" id="Radio4" name = "Never"/>
             <label>Never</label><br></br>
             <input type="radio" id="Radio5" name = "Time"/> 
-            <label>Time</label><input type="text" id="dropdown1" />
+            <label>Time  </label><input type="text" id="dropdown1" />
           </div> 
         </div>
       </div>

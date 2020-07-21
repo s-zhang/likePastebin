@@ -24,6 +24,9 @@ h1{
 }
 #newFormButton{
   float: right;
+  width: 92.57px;
+  height: 35px;
+  margin: 5px;
 }
 .img2 {
   height: 40px;
@@ -53,6 +56,18 @@ h1{
   height: 30vh;
   margin-left: 200px;
 }
+.privacy{
+  margin-bottom: 30px;
+}
+.privacyChoices{
+  padding-left: 20px;
+}
+.expireChoices{
+  padding-left: 20px;
+}
+
+
+
 #create{
   margin-left: 200px;
   margin-bottom: 100px;
