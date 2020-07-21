@@ -3,11 +3,62 @@
   text-align: center;
 }
 
-#div{
-  height: 30%;
-  
+
+h1{
+  font-size: 24px;
+  line-height: 29px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  margin: 5px 0;
 }
 
+
+.header{
+  position: fixed;
+  height: 45px;
+  width: 100%;
+  top: 0;
+  background-color: #EC6D52;
+  z-index: 10;
+}
+#newFormButton{
+  float: right;
+}
+.img2 {
+  height: 40px;
+}
+
+
+
+.body{
+  height: 55vh;
+  margin-top: 45px;
+  margin-left: 200px;
+  padding-top: 50px;
+}
+#myTitle{
+  width: 30%;
+  margin-bottom: 10px;
+}
+#myTextArea{
+  width: 60%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+
+
+.settings{
+  height: 30vh;
+  margin-left: 200px;
+}
+#create{
+  margin-left: 200px;
+  margin-bottom: 100px;
+  width: 171px;
+  height: 50px;
+}
 
 
 /* img {
@@ -15,20 +66,12 @@
 
 } */
 
-#img1 {
-  width: 800px;
-}
-
-.img2 {
-  width: 35%;
-}
-
+/*
 form {
   margin: 20px auto;
   width: 320px;
   color: #E35F21
 }
-
 
 #myTextArea{
 
@@ -43,7 +86,7 @@ form {
   height: 50%;
   margin-left: 10%;
   margin-top: 10%;
-} */
+} 
 #myFile {
   width: 30%;
   margin: 0%;
@@ -94,7 +137,7 @@ margin-top: 500px;
  height: 600px;
 
 
-} */
+}
 
 input[type="password"] {
   margin-bottom: 10px;
@@ -144,7 +187,7 @@ input[type="box"]{
 input[type="file"]{
   margin-bottom: 100px;
 }
-
+*/
 
 
 
