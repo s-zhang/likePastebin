@@ -9,3 +9,9 @@ addons:
     packages:
       - redis-tools
       - redis-server
+      
+      
+language: node_js
+dist: bionic
+before_script:
+  - cd frontend
