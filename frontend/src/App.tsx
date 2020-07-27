@@ -14,7 +14,7 @@ function App() {
 
 
   const submit=(e:FormEvent)=>{
-    e.preventDefault()
+    
   }
   
 
@@ -88,7 +88,6 @@ function App() {
                 onChange={(e) => setExpiration(e.target.value)}
                 className="expirationFormInput" />
               Time
-              <input type="text" id="count" />
             </label>
           </div>
         </div>
