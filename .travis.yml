@@ -3,12 +3,9 @@ matrix:
     - language: java
       dist: bionic
       jdk:
-        - oraclejdk9
+        - oraclejdk11
       before_script:
         - cd backend
-      before_install:
-        - rm "${JAVA_HOME}/lib/security/cacerts"
-        - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
 
     - language: node_js
       dist: bionic
