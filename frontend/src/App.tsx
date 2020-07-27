@@ -5,7 +5,10 @@ import './App.css';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
+
+
 class App extends React.Component<any, any>  {
+
   constructor(props: any) {
     super(props);
     this.state = {
@@ -41,115 +44,113 @@ class App extends React.Component<any, any>  {
 
 
 
-componentDidMount() {
-  const requestHeaders: HeadersInit = new Headers();
-requestHeaders.set('Content-Type', 'application/json',);
-=======
-    // Simple POST request with a JSON body using fetch
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
-    };
-    fetch('http://localhost:8080/greeting', { mode: 'no-cors' },)
+  componentDidMount() {
+    const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('Content-Type', 'application/json',);
+
+      // Simple POST request with a JSON body using fetch
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: 'React POST Request Example' })
+      };
+      fetch('http://localhost:8080/greeting', { mode: 'no-cors' },)
+      
+          .then(response => response.json())
+          .then(data => this.setState({ postId: data.id }));
+  }
+
+  render(){
+
+    const { postId } = this.state;
+    const [title, setTitle] = useState('')
+    const [text, setText] = useState('')
+    const [file, setFile] = useState<File>()
+    const [privacy, setPrivacy] = useState('private')
+    const [expiration, setExpiration] = useState('never')
     
-        .then(response => response.json())
-        .then(data => this.setState({ postId: data.id }));
-}
->>>>>>> 3139a60c6f70a7067a9d75c3a9241f07f1208a4d
+    return (
 
-render(){
-
-  const { postId } = this.state;
-
-
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [file, setFile] = useState<File>()
-  const [privacy, setPrivacy] = useState('private')
-  const [expiration, setExpiration] = useState('never')
-  
-  return (
-
-    <div>
-      <div className="header">
-        <img src={s} alt="secure share" className="img2" />
-        <button id="newFormButton"> + New</button>
-      </div>
-
-      <form action="">
-        <div className="body">
-          <h1>Title</h1>
-          <input id="myTitle" onChange={(e) => setTitle(e.target.value)} value={title}></input>
-          
-          <h1>Text</h1>
-          <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)"
-          onChange={(e) => setText(e.target.value)} value={text}></textarea>
-          <br></br>
-          
-          <input type="file" id="myFile" name="filename"></input>
+      <div>
+        <div className="header">
+          <img src={s} alt="secure share" className="img2" />
+          <button id="newFormButton"> + New</button>
         </div>
 
-        <div className="settings">
-          
-          <div className="privacy">
-            <h1>Privacy</h1>
-            <label className="privacyChoices">
-              <input
-                type="radio"
-                name="privacy"
-                value="private"
-                checked={privacy === "private"}
-                onChange={(e) => setPrivacy(e.target.value)}
-                className="PrivacyFormInput" />
-              Private
-            </label>
-            <br/>
-            <label className="privacyChoices">
-              <input
-                type="radio"
-                name="privacy"
-                value="public"
-                checked={privacy === "public"}
-                onChange={(e) => setPrivacy(e.target.value)}
-                className="PrivacyFormInput" />
-              Public
-            </label>
+        <form action="">
+          <div className="body">
+            <h1>Title</h1>
+            <input id="myTitle" onChange={(e) => setTitle(e.target.value)} value={title}></input>
+            
+            <h1>Text</h1>
+            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)"
+            onChange={(e) => setText(e.target.value)} value={text}></textarea>
+            <br></br>
+            
+            <input type="file" id="myFile" name="filename"></input>
           </div>
 
-          <div className="expiration">
-            <h1>Expiration</h1>
-            <label className="expireChoices">
+          <div className="settings">
+            
+            <div className="privacy">
+              <h1>Privacy</h1>
+              <label className="privacyChoices">
+                <input
+                  type="radio"
+                  name="privacy"
+                  value="private"
+                  checked={privacy === "private"}
+                  onChange={(e) => setPrivacy(e.target.value)}
+                  className="PrivacyFormInput" />
+                Private
+              </label>
+              <br/>
+              <label className="privacyChoices">
+                <input
+                  type="radio"
+                  name="privacy"
+                  value="public"
+                  checked={privacy === "public"}
+                  onChange={(e) => setPrivacy(e.target.value)}
+                  className="PrivacyFormInput" />
+                Public
+              </label>
+            </div>
+
+            <div className="expiration">
+              <h1>Expiration</h1>
+              <label className="expireChoices">
+                  <input
+                    type="radio"
+                    name="expire"
+                    value="never"
+                    checked={expiration === "never"}
+                    onChange={(e) => setExpiration(e.target.value)}
+                    className="expirationFormInput" />
+                  Never
+              </label>
+              <br/>
+              <label className="expireChoices">
                 <input
                   type="radio"
                   name="expire"
-                  value="never"
-                  checked={expiration === "never"}
+                  value="time"
+                  checked={expiration === "timed"} /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
                   onChange={(e) => setExpiration(e.target.value)}
                   className="expirationFormInput" />
-                Never
-            </label>
-            <br/>
-            <label className="expireChoices">
-              <input
-                type="radio"
-                name="expire"
-                value="time"
-                checked={expiration === "timed"} /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
-                onChange={(e) => setExpiration(e.target.value)}
-                className="expirationFormInput" />
-              Time
-              <input type="text" id="count" />
-            </label>
+                Time
+                <input type="text" id="count" />
+              </label>
+            </div>
           </div>
-        </div>
 
-        <br></br>
-        <input type="submit" id="create"></input>
-      </form>
-    </div>
+          <br></br>
+          <input type="submit" id="create"></input>
+        </form>
+      </div>
 
-  );
-}
+    );
+  }
+};
 
 export default App;
