@@ -13,7 +13,8 @@ class App extends React.Component<any, any>  {
     super(props);
     this.state = {
       postId: null
-    };  
+    };
+
   }
   App() {
     //encrypt whatever is in the text box
@@ -63,11 +64,6 @@ class App extends React.Component<any, any>  {
   render(){
 
     const { postId } = this.state;
-    const [title, setTitle] = useState('')
-    const [text, setText] = useState('')
-    const [file, setFile] = useState<File>()
-    const [privacy, setPrivacy] = useState('private')
-    const [expiration, setExpiration] = useState('never')
     
     return (
 
@@ -80,11 +76,10 @@ class App extends React.Component<any, any>  {
         <form action="">
           <div className="body">
             <h1>Title</h1>
-            <input id="myTitle" onChange={(e) => setTitle(e.target.value)} value={title}></input>
+            <input id="myTitle"></input>
             
             <h1>Text</h1>
-            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)"
-            onChange={(e) => setText(e.target.value)} value={text}></textarea>
+            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)"></textarea>
             <br></br>
             
             <input type="file" id="myFile" name="filename"></input>
@@ -99,8 +94,6 @@ class App extends React.Component<any, any>  {
                   type="radio"
                   name="privacy"
                   value="private"
-                  checked={privacy === "private"}
-                  onChange={(e) => setPrivacy(e.target.value)}
                   className="PrivacyFormInput" />
                 Private
               </label>
@@ -110,8 +103,6 @@ class App extends React.Component<any, any>  {
                   type="radio"
                   name="privacy"
                   value="public"
-                  checked={privacy === "public"}
-                  onChange={(e) => setPrivacy(e.target.value)}
                   className="PrivacyFormInput" />
                 Public
               </label>
@@ -124,8 +115,6 @@ class App extends React.Component<any, any>  {
                     type="radio"
                     name="expire"
                     value="never"
-                    checked={expiration === "never"}
-                    onChange={(e) => setExpiration(e.target.value)}
                     className="expirationFormInput" />
                   Never
               </label>
@@ -134,11 +123,9 @@ class App extends React.Component<any, any>  {
                 <input
                   type="radio"
                   name="expire"
-                  value="time"
-                  checked={expiration === "timed"} /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
-                  onChange={(e) => setExpiration(e.target.value)}
-                  className="expirationFormInput" />
-                Time
+                  value="time" /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
+                  className="expirationFormInput" /> 
+                Time 
                 <input type="text" id="count" />
               </label>
             </div>
