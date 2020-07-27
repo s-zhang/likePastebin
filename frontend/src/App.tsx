@@ -48,15 +48,15 @@ class App extends React.Component<any, any>  {
 
   componentDidMount() {
     const requestHeaders: HeadersInit = new Headers();
-  requestHeaders.set('Content-Type', 'application/json',);
+    requestHeaders.set('Content-Type', 'application/json',);
 
-      // Simple POST request with a JSON body using fetch
-      const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ title: 'React POST Request Example' })
-      };
-      fetch('http://localhost:8080/getPasteDetails?id=Nate')
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'React POST Request Example' })
+    };
+    fetch('http://localhost:8080/getPasteDetails?id=Nate')
       
           .then(response => response.json())
           .then(data => this.setState(
@@ -131,7 +131,7 @@ class App extends React.Component<any, any>  {
                   value="time" /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
                   className="expirationFormInput" /> 
                 Set Expiration Day 
-                <input type="text" id="count" placeholder="mm/dd/yyyy" />
+                <input type="text" id="count" placeholder="mm/dd/yyyy"/>
               </label>
             </div>
           </div>
