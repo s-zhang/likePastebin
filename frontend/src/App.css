@@ -68,6 +68,7 @@ h1{
 #count{
   margin-left: 1vh;
   width: 8vh;
+  text-align: right;
 }
 #dropdown{
   margin-left: 0.5vh;

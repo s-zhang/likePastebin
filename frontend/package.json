@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.8",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
+    "datejs": "^1.0.0-rc3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -39,7 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "datejs": "^1.0.0-rc3"
-  }
+  "devDependencies": {}
 }
