@@ -2,6 +2,8 @@ matrix:
   include:
     - language: java
       dist: bionic
+      jdk:
+        - oraclejdk8
       before_script:
         - cd backend
 
@@ -14,3 +16,9 @@ matrix:
       script:
         - npm install
         - npm test
+
+
+
+
+
+
