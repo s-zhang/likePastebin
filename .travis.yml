@@ -1,17 +1,18 @@
-language: java
-dist: bionic
-before_script:
-  - cd backend
-addons:
-  apt:
-    sources:
-      - ppa:chris-lea/redis-server
-    packages:
-      - redis-tools
-      - redis-server
-      
-      
-language: node_js
-dist: bionic
-before_script:
-  - cd frontend
+matrix:
+  include:
+    - language: java
+      dist: bionic
+      jdk:
+        - oraclejdk11
+      before_script:
+        - cd backend
+
+    - language: node_js
+      dist: bionic
+      node_js:
+        - 12
+      before_script:
+        - cd frontend
+      script:
+        - npm install
+        - npm test
