@@ -12,7 +12,8 @@ class App extends React.Component<any, any>  {
   constructor(props: any) {
     super(props);
     this.state = {
-      postId: null
+      postId: null,
+      text: "",
     };
 
   }
@@ -55,10 +56,14 @@ class App extends React.Component<any, any>  {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ title: 'React POST Request Example' })
       };
-      fetch('http://localhost:8080/greeting', { mode: 'no-cors' },)
+      fetch('http://localhost:8080/getPasteDetails?id=Nate')
       
           .then(response => response.json())
-          .then(data => this.setState({ postId: data.id }));
+          .then(data => this.setState(
+            { 
+              postId: data.id,
+              text: JSON.stringify(data)
+            }));
   }
 
   render(){
@@ -79,7 +84,7 @@ class App extends React.Component<any, any>  {
             <input id="myTitle"></input>
             
             <h1>Text</h1>
-            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)"></textarea>
+            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }></textarea>
             <br></br>
             
             <input type="file" id="myFile" name="filename"></input>
