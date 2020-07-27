@@ -42,7 +42,6 @@ class App extends React.Component<any, any>  {
   }
 
 
-
 componentDidMount() {
   const requestHeaders: HeadersInit = new Headers();
 requestHeaders.set('Content-Type', 'application/json',);
