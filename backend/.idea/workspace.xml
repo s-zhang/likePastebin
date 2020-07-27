@@ -37,14 +37,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="591ee16b-240b-4751-b3a3-4576e14dd193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restservice/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restservice/GreetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="591ee16b-240b-4751-b3a3-4576e14dd193" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
