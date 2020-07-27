@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.objects.Paste;
@@ -21,7 +22,7 @@ public class RestDemoController {
 	FirebaseService firebaseService;
 	
 	@GetMapping("/getPasteDetails")
-	public Paste getExample(@RequestHeader() String id) throws InterruptedException, ExecutionException {
+	public Paste getExample(@RequestParam(value = "id") String id) throws InterruptedException, ExecutionException {
 		return firebaseService.getPasteDetails(id);
 	}
 
