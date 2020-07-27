@@ -3,7 +3,7 @@ matrix:
     - language: java
       dist: bionic
       jdk:
-        - oraclejdk8
+        - oraclejdk9
       before_script:
         - cd backend
 
@@ -16,9 +16,3 @@ matrix:
       script:
         - npm install
         - npm test
-
-
-
-
-
-
