@@ -13,5 +13,7 @@ addons:
       
 language: node_js
 dist: bionic
+node_js:
+  - 12
 before_script:
   - cd frontend
