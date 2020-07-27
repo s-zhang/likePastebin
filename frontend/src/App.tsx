@@ -2,22 +2,73 @@ import React, { useState, FormEvent } from 'react';
 //import logo from './logo.svg';
 import s from './S.png';
 import './App.css';
+var AES = require("crypto-js/aes");
+var SHA256 = require("crypto-js/sha256");
+var CryptoJS = require("crypto-js");
+class App extends React.Component<any, any>  {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      postId: null
+    };  
+  }
+  App() {
+    //encrypt whatever is in the text box
+    
+    const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
+    alert(element);
+    let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt(element,keyUtf8,{
+      mode: CryptoJS.mode.ECB,
+      keySize: 128,
+      });
+    //log encrypted data
+    alert('Encrypt Data -')
+    alert(ciphertext);
+  
+    // Decrypt
+    var decryptedBytes = CryptoJS.AES.decrypt(ciphertext, keyUtf8,{
+      mode: CryptoJS.mode.ECB,
+      keySize: 128,
+      });
+    var decryptedData = decryptedBytes.toString();
+  
+    //log decrypted Data
+    alert('decrypted Data -')
+    alert(decryptedData);
+  }
 
 
-function App() {
+
+componentDidMount() {
+  const requestHeaders: HeadersInit = new Headers();
+requestHeaders.set('Content-Type', 'application/json',);
+=======
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'React POST Request Example' })
+    };
+    fetch('http://localhost:8080/greeting', { mode: 'no-cors' },)
+    
+        .then(response => response.json())
+        .then(data => this.setState({ postId: data.id }));
+}
+>>>>>>> 3139a60c6f70a7067a9d75c3a9241f07f1208a4d
+
+render(){
+
+  const { postId } = this.state;
+
 
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
   const [file, setFile] = useState<File>()
   const [privacy, setPrivacy] = useState('private')
   const [expiration, setExpiration] = useState('never')
-
-
-  const submit=(e:FormEvent)=>{
-    
-  }
   
-
   return (
 
     <div>
@@ -88,6 +139,7 @@ function App() {
                 onChange={(e) => setExpiration(e.target.value)}
                 className="expirationFormInput" />
               Time
+              <input type="text" id="count" />
             </label>
           </div>
         </div>
