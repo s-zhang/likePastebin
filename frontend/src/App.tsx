@@ -125,8 +125,8 @@ class App extends React.Component<any, any>  {
                   name="expire"
                   value="time" /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
                   className="expirationFormInput" /> 
-                Time 
-                <input type="text" id="count" />
+                Set Expiration Day 
+                <input type="text" id="count" placeholder="mm/dd/yyyy" />
               </label>
             </div>
           </div>
