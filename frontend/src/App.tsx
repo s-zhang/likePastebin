@@ -2,10 +2,13 @@ import React, { useState, FormEvent } from 'react';
 //import logo from './logo.svg';
 import s from './S.png';
 import './App.css';
+import { start } from 'repl';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
-
+require('datejs');
+const date = new Date();
+console.log(date);
 
 class App extends React.Component<any, any>  {
 
@@ -17,6 +20,7 @@ class App extends React.Component<any, any>  {
     };
 
   }
+  
   App() {
     //encrypt whatever is in the text box
     
@@ -44,8 +48,6 @@ class App extends React.Component<any, any>  {
     alert(decryptedData);
   }
 
-
-
   componentDidMount() {
     const requestHeaders: HeadersInit = new Headers();
     requestHeaders.set('Content-Type', 'application/json',);
@@ -69,6 +71,8 @@ class App extends React.Component<any, any>  {
   render(){
 
     const { postId } = this.state;
+    const startTime= Date.now();
+    const setExpiration = startTime
     
     return (
 
@@ -130,8 +134,15 @@ class App extends React.Component<any, any>  {
                   name="expire"
                   value="time" /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
                   className="expirationFormInput" /> 
-                Set Expiration Day 
-                <input type="text" id="count" placeholder="mm/dd/yyyy"/>
+                Set Expiration: 
+                <input type="text" id="count"/>
+                <select name="dropdown" id="dropdown">
+                  <option value="minute">minute(s)</option>
+                  <option value="hour">hour(s)</option>
+                  <option value="day">day(s)</option>
+                  <option value="week">week(s)</option>
+                  <option value="year">year(s)</option>
+                </select>
               </label>
             </div>
           </div>
@@ -140,6 +151,7 @@ class App extends React.Component<any, any>  {
           <input type="submit" id="create"></input>
         </form>
       </div>
+      
 
     );
   }

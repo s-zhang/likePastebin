@@ -37,7 +37,7 @@ h1{
 .body{
   height: 60vh;
   margin-top: 7vh;
-  margin-left: 25vh;
+  margin-left: 20vh;
   padding-top: 8vh;
 }
 #myTitle{
@@ -54,7 +54,7 @@ h1{
 
 .settings{
   height: 30vh;
-  margin-left: 25vh;
+  margin-left: 20vh;
 }
 .privacy{
   margin-bottom: 3vh;
@@ -67,12 +67,16 @@ h1{
 }
 #count{
   margin-left: 1vh;
+  width: 8vh;
+}
+#dropdown{
+  margin-left: 0.5vh;
 }
 
 
 
 #create{
-  margin-left: 25vh;
+  margin-left: 20vh;
   margin-bottom: 15vh;
   width: 171px;
   height: 50px;
