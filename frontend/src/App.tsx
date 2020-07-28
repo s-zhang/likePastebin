@@ -57,7 +57,7 @@ class App extends React.Component<any, any>  {
       expiration: this.state.expiration,
       expireAt
     }
-
+    /*
     const stringData= JSON.stringify(data)
     let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
     // Encrypt
@@ -74,7 +74,7 @@ class App extends React.Component<any, any>  {
       })
     }).then(response=>{
       console.log(response.status)
-    })
+    })*/
   }
 
 
