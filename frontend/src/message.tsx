@@ -6,7 +6,6 @@ import { start } from 'repl';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
-require('datejs');
 const date = new Date();
 console.log(date);
 
