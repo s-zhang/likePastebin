@@ -45,6 +45,7 @@ class message extends React.Component<any, any>  {
             <h1>Text</h1>
             <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }></textarea>
             <br></br>
+            <h3>Link</h3><input type="text" id= "link"></input>
 
             </div>
             </form>
