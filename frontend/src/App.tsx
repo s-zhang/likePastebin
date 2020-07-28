@@ -6,9 +6,7 @@ import { start } from 'repl';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
-require('datejs');
-const date = new Date();
-console.log(date);
+const moment = require("moment")
 
 class App extends React.Component<any, any>  {
 
@@ -16,11 +14,70 @@ class App extends React.Component<any, any>  {
     super(props);
     this.state = {
       postId: null,
+      title: "",
       text: "",
+      privacy: "",
+      expiration: "",
+      expireNumber: "",
+      expireUnit: "minute",
     };
-
   }
   
+  Submit(){
+    let expireAt
+    if(this.state.expiration==="never"){
+      expireAt= null
+    }
+    else{
+      let date: any = Date.now()
+      switch (this.state.expireUnit) {
+        case "minute":
+          date = moment(date).add(this.state.expireNumber, 'm')
+          break;
+        case "hour":
+          date = moment(date).add(this.state.expireNumber, 'h')
+          break;
+        case "day":
+          date = moment(date).add(this.state.expireNumber, 'd')
+            break;
+        case "week":
+          date = moment(date).add(this.state.expireNumber, 'w')
+            break;
+        case "year":
+          date = moment(date).add(this.state.expireNumber, 'y')
+            break;
+        default: break; }
+      expireAt=date.toString()
+    }
+    console.log(expireAt)
+    const data = { 
+      title: this.state.title,
+      text: this.state.text,
+      privacy: this.state.privacy,
+      expiration: this.state.expiration,
+      expireAt
+    }
+
+    const stringData= JSON.stringify(data)
+    let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt(stringData,keyUtf8,{
+      mode: CryptoJS.mode.ECB,
+      keySize: 128,
+      });
+    console.log(ciphertext)
+
+    fetch('exampleurl', {
+      method: "POST",
+      body: JSON.stringify({
+        data: ciphertext
+      })
+    }).then(response=>{
+      console.log(response.status)
+    })
+  }
+
+
   App() {
     //encrypt whatever is in the text box
     
@@ -71,8 +128,6 @@ class App extends React.Component<any, any>  {
   render(){
 
     const { postId } = this.state;
-    const startTime= Date.now();
-    const setExpiration = startTime
     
     return (
 
@@ -82,13 +137,19 @@ class App extends React.Component<any, any>  {
           <button id="newFormButton"> + New</button>
         </div>
 
-        <form action="">
+        <form onSubmit={ e => {
+          e.preventDefault()
+          this.Submit()
+        }}>
           <div className="body">
             <h1>Title</h1>
-            <input id="myTitle"></input>
+            <input id="myTitle" onChange={e => this.setState({
+              title: e.target.value
+            })} value={ this.state.title }></input>
             
             <h1>Text</h1>
-            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }></textarea>
+            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }
+            onChange={e => this.setState({text: e.target.value})} value={ this.state.text }></textarea>
             <br></br>
             
             <input type="file" id="myFile" name="filename"></input>
@@ -103,7 +164,9 @@ class App extends React.Component<any, any>  {
                   type="radio"
                   name="privacy"
                   value="private"
-                  className="PrivacyFormInput" />
+                  className="PrivacyFormInput"
+                  onChange={e => this.setState({privacy: e.target.value})} 
+                  checked={ this.state.privacy==="private" } />
                 Private
               </label>
               <br/>
@@ -112,7 +175,9 @@ class App extends React.Component<any, any>  {
                   type="radio"
                   name="privacy"
                   value="public"
-                  className="PrivacyFormInput" />
+                  className="PrivacyFormInput"
+                  onChange={e => this.setState({privacy: e.target.value})} 
+                  checked={ this.state.privacy==="public" } />
                 Public
               </label>
             </div>
@@ -124,7 +189,9 @@ class App extends React.Component<any, any>  {
                     type="radio"
                     name="expire"
                     value="never"
-                    className="expirationFormInput" />
+                    className="expirationFormInput"
+                    onChange={e => this.setState({expiration: e.target.value})} 
+                    checked={ this.state.expiration==="never" } />
                   Never
               </label>
               <br/>
@@ -132,11 +199,21 @@ class App extends React.Component<any, any>  {
                 <input
                   type="radio"
                   name="expire"
-                  value="time" /*NEED TO ADD TIME CHOICE and dropdown for min/days/etc*/
-                  className="expirationFormInput" /> 
+                  value="timed"
+                  className="expirationFormInput"
+                  onChange={e => this.setState({expiration: e.target.value})} 
+                  checked={ this.state.expiration==="timed" } /> 
                 Set Expiration: 
-                <input type="text" id="count"/>
-                <select name="dropdown" id="dropdown">
+                <input type="text" id="count" onChange={e => 
+                  {
+                    if( !isNaN(Number(e.target.value)) ){
+                      this.setState({expireNumber: e.target.value})
+                    }
+                  }} 
+                  value={ this.state.expireNumber } 
+                  />
+                <select name="dropdown" id="dropdown" 
+                onChange={e => this.setState({expireUnit: e.target.value})} value={ this.state.expireUnit }>
                   <option value="minute">minute(s)</option>
                   <option value="hour">hour(s)</option>
                   <option value="day">day(s)</option>
