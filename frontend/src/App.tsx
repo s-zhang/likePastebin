@@ -9,9 +9,7 @@ import Home from './Home';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
-require('datejs');
-const date = new Date();
-console.log(date);
+const moment = require("moment")
 
 class App extends React.Component<any, any>  {
 
@@ -19,14 +17,71 @@ class App extends React.Component<any, any>  {
     super(props);
     this.state = {
       postId: null,
+      title: "",
       text: "",
+      privacy: "",
+      expiration: "",
+      expireNumber: "",
+      expireUnit: "minute",
     };
-
   }
   
+  Submit(){
+    let expireAt
+    if(this.state.expiration==="never"){
+      expireAt= null
+    }
+    else{
+      let date: any = Date.now()
+      switch (this.state.expireUnit) {
+        case "minute":
+          date = moment(date).add(this.state.expireNumber, 'm')
+          break;
+        case "hour":
+          date = moment(date).add(this.state.expireNumber, 'h')
+          break;
+        case "day":
+          date = moment(date).add(this.state.expireNumber, 'd')
+            break;
+        case "week":
+          date = moment(date).add(this.state.expireNumber, 'w')
+            break;
+        case "year":
+          date = moment(date).add(this.state.expireNumber, 'y')
+            break;
+        default: break; }
+      expireAt=date.toString()
+    }
+    console.log(expireAt)
+    const data = { 
+      title: this.state.title,
+      text: this.state.text,
+      privacy: this.state.privacy,
+      expireAt: expireAt,
+    }
+    /*
+    const stringData= JSON.stringify(data)
+    let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt(stringData,keyUtf8,{
+      mode: CryptoJS.mode.ECB,
+      keySize: 128,
+      });
+    console.log(ciphertext)
+
+    fetch('exampleurl', {
+      method: "POST",
+      body: JSON.stringify({
+        data: ciphertext
+      })
+    }).then(response=>{
+      console.log(response.status)
+    })*/
+  }
+
   App() {
     //encrypt whatever is in the text box
-    
+    /*
     const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     /*alert(element);
     let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
@@ -49,9 +104,7 @@ class App extends React.Component<any, any>  {
     //log decrypted Data
     alert('decrypted Data -')
     alert(decryptedData); */
-    
-  } 
-
+  }
   componentDidMount() {
     const requestHeaders: HeadersInit = new Headers();
     requestHeaders.set('Content-Type', 'application/json',);
@@ -78,6 +131,7 @@ class App extends React.Component<any, any>  {
         <Route exact path="/" component={Home} />
         <Route path="/message" component={message} />
       </BrowserRouter>
+
     );
   }
 };
