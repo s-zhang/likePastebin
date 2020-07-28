@@ -1,0 +1,113 @@
+
+.App {
+  text-align: center;
+}
+
+
+h1{
+  font-size: 24px;
+  line-height: 29px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+
+.header{
+  position: fixed;
+  height: 45px;
+  width: 100%;
+  top: 0;
+  background-color: #EC6D52;
+  z-index: 10;
+}
+#newFormButton{
+  float: right;
+  width: 92.57px;
+  height: 35px;
+  margin: 5px;
+}
+.img2 {
+  height: 40px;
+}
+
+
+
+.body{
+  height: 55vh;
+  margin-top: 35px;
+  margin-left: 200px;
+  padding-top: 50px;
+}
+#myTitle{
+  width: 30%;
+  margin-bottom: 10px;
+}
+#myTextArea{
+  width: 60%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+
+
+.settings{
+  height: 30vh;
+  margin-left: 200px;
+}
+.privacy{
+  margin-bottom: 30px;
+}
+.privacyChoices{
+  padding-left: 20px;
+}
+.expireChoices{
+  padding-left: 20px;
+}
+
+
+
+#create{
+  margin-left: 200px;
+  margin-bottom: 100px;
+  width: 171px;
+  height: 50px;
+}
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
