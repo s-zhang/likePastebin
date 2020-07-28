@@ -54,8 +54,7 @@ class App extends React.Component<any, any>  {
       title: this.state.title,
       text: this.state.text,
       privacy: this.state.privacy,
-      expiration: this.state.expiration,
-      expireAt
+      expireAt: expireAt,
     }
     /*
     const stringData= JSON.stringify(data)
