@@ -80,7 +80,7 @@ class App extends React.Component<any, any>  {
 
   App() {
     //encrypt whatever is in the text box
-    
+    /*
     const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     alert(element);
     let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
@@ -102,7 +102,7 @@ class App extends React.Component<any, any>  {
   
     //log decrypted Data
     alert('decrypted Data -')
-    alert(decryptedData);
+    alert(decryptedData); */
   }
 
   componentDidMount() {
@@ -228,8 +228,6 @@ class App extends React.Component<any, any>  {
           <input type="submit" id="create"></input>
         </form>
       </div>
-      
-
     );
   }
 };
