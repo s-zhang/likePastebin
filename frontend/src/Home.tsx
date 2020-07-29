@@ -62,12 +62,13 @@ class Home extends React.Component<any, any>  {
   }
   
   handleClick() {
-    //encrypt whatever is in the text box
   
     this.setState({
         toMessagePage: true
     });
     const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
+    
+    
     /*alert(element);
     let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
     // Encrypt
