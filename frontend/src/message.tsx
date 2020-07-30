@@ -21,11 +21,6 @@ class message extends React.Component<any, any>  {
     this.handleClick= this.handleClick.bind(this)
 
   }
-     
-  getID(){
-    const id = window.location.pathname.substring(1)
-    return id
-  }
 
   componentDidMount() {
     const requestHeaders: HeadersInit = new Headers();
