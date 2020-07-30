@@ -32,7 +32,7 @@ class message extends React.Component<any, any>  {
     requestHeaders.set('Content-Type', 'application/json',);
 
     // Simple POST request with a JSON body using fetch
-    fetch('http://localhost:8080/getPasteDetails?id=' + window.location.pathname.substring(1))
+    fetch('http://localhost:8080/getPasteDetails?id=' + window.location.pathname.substring(9))
       
           .then(response => response.json())
           .then(data => this.setState(

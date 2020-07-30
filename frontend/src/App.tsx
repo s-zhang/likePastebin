@@ -11,7 +11,7 @@ class App extends React.Component<any, any>  {
     return(
       <BrowserRouter>
         <Route exact path="/" component={Home} />
-        <Route path="/" component={message} />
+        <Route path="/message" component={message} />
       </BrowserRouter>
 
     );
