@@ -1,8 +1,6 @@
-import React, { useState, FormEvent } from 'react';
-//import logo from './logo.svg';
+import React from 'react';
 import s from './S.png';
 import './App.css';
-import { start } from 'repl';
 import { Redirect } from 'react-router-dom';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
@@ -14,19 +12,15 @@ class message extends React.Component<any, any>  {
   constructor(props: any) {
     super(props);
     this.state = {
-      postId: null,
-      text: "",
     };
 
     this.handleClick= this.handleClick.bind(this)
-
   }
 
   componentDidMount() {
     const requestHeaders: HeadersInit = new Headers();
     requestHeaders.set('Content-Type', 'application/json',);
 
-    // Simple POST request with a JSON body using fetch
     fetch('http://localhost:8080/getPasteDetails?id=' + window.location.pathname.substring(9))
       
           .then(response => response.json())
@@ -43,14 +37,7 @@ class message extends React.Component<any, any>  {
     });
   }
 
-
-
-
   render(){
-
-    const { postId } = this.state;
-    const startTime= Date.now();
-    const setExpiration = startTime
 
     if(this.state.toHomePage) {
       return <Redirect to="/" />
@@ -64,7 +51,6 @@ class message extends React.Component<any, any>  {
           <button onClick={this.handleClick} id="newFormButton"> + New</button>
         </div>
       
-
         <div className="view">
           
           <div className="Link">
@@ -73,7 +59,6 @@ class message extends React.Component<any, any>  {
               <input type="text" id="link"></input>
               <button id="copy">Copy Link</button>
             </label>
-            
           </div>
 
           <div className="info">
