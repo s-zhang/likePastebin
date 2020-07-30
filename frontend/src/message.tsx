@@ -22,12 +22,17 @@ class message extends React.Component<any, any>  {
 
   }
      
+  getID(){
+    const id = window.location.pathname.substring(1)
+    return id
+  }
+
   componentDidMount() {
     const requestHeaders: HeadersInit = new Headers();
     requestHeaders.set('Content-Type', 'application/json',);
 
     // Simple POST request with a JSON body using fetch
-    fetch('http://localhost:8080/getPasteDetails?id=Nate')
+    fetch('http://localhost:8080/getPasteDetails?id=' + window.location.pathname.substring(1))
       
           .then(response => response.json())
           .then(data => this.setState(
@@ -44,6 +49,8 @@ class message extends React.Component<any, any>  {
   }
 
 
+
+
   render(){
 
     const { postId } = this.state;
@@ -52,7 +59,7 @@ class message extends React.Component<any, any>  {
 
     if(this.state.toHomePage) {
       return <Redirect to="/" />
-  }
+    }
                      
     return (
 
