@@ -35,10 +35,13 @@ h1{
 
 
 .body{
-  height: 60vh;
-  margin-top: 7vh;
-  margin-left: 20vh;
-  padding-top: 8vh;
+  padding-top: 13vh;
+  margin-left: 10vh;
+  padding-left: 10vh;
+  margin-right: 10vh;
+  padding-bottom: 3vh;
+  margin-bottom: 5vh;
+  background-color: #edb8ad;
 }
 #myTitle{
   width: 30%;
@@ -90,7 +93,7 @@ h1{
   margin: 15vh 20vh 0 20vh;
 }
 
-.encryptionLink{
+.Link{
   margin-bottom: 5vh;
 }
 #link{

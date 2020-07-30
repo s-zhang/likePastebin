@@ -50,24 +50,32 @@ class Home extends React.Component<any, any>  {
           date = moment(date).add(this.state.expireNumber, 'y')
             break;
         default: break; }
-      expireAt=date.toString()
+      expireAt=date.toISOString()
     }
     console.log(expireAt)
     const data = { 
+      message: this.state.text,
       title: this.state.title,
-      text: this.state.text,
-      privacy: this.state.privacy,
-      expireAt: expireAt,
+      expiration: expireAt,
     }
+
+    fetch('http://localhost:8080/createPaste', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
   }
   
   handleClick() {
-  
+    
+    this.Submit();
     this.setState({
         toMessagePage: true
     });
-    const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
+    //const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
     /*alert(element);
     let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')
@@ -93,25 +101,7 @@ class Home extends React.Component<any, any>  {
     
   } 
 
-  componentDidMount() {
-    const requestHeaders: HeadersInit = new Headers();
-    requestHeaders.set('Content-Type', 'application/json',);
-
-    // Simple POST request with a JSON body using fetch
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
-    };
-    fetch('http://localhost:8080/getPasteDetails?id=Nate')
-      
-          .then(response => response.json())
-          .then(data => this.setState(
-            { 
-              postId: data.id,
-              text: JSON.stringify(data)
-            }));
-  }
+  
   render(){
 
     if(this.state.toMessagePage) {
@@ -140,7 +130,7 @@ class Home extends React.Component<any, any>  {
             })} value={ this.state.title }></input>
             
             <h1>Text</h1>
-            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }	
+            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" 	
             onChange={e => this.setState({text: e.target.value})} value={ this.state.text }></textarea>
             <br></br>
             
