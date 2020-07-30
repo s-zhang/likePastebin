@@ -93,25 +93,7 @@ class Home extends React.Component<any, any>  {
     
   } 
 
-  componentDidMount() {
-    const requestHeaders: HeadersInit = new Headers();
-    requestHeaders.set('Content-Type', 'application/json',);
-
-    // Simple POST request with a JSON body using fetch
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
-    };
-    fetch('http://localhost:8080/getPasteDetails?id=Nate')
-      
-          .then(response => response.json())
-          .then(data => this.setState(
-            { 
-              postId: data.id,
-              text: JSON.stringify(data)
-            }));
-  }
+  
   render(){
 
     if(this.state.toMessagePage) {
@@ -140,7 +122,7 @@ class Home extends React.Component<any, any>  {
             })} value={ this.state.title }></input>
             
             <h1>Text</h1>
-            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }	
+            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" 	
             onChange={e => this.setState({text: e.target.value})} value={ this.state.text }></textarea>
             <br></br>
             
