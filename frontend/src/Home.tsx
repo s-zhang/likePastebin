@@ -1,8 +1,6 @@
-import React, { useState, FormEvent } from 'react';
-//import logo from './logo.svg';
+import React from 'react';
 import s from './S.png';
 import './App.css';
-import { start } from 'repl';
 import { Redirect } from 'react-router-dom';
 const moment = require("moment")
 var AES = require("crypto-js/aes");
@@ -101,16 +99,13 @@ class Home extends React.Component<any, any>  {
     
   } 
 
-  
   render(){
 
     if(this.state.toMessagePage) {
         return <Redirect to="/message" />
     }
-
     const { postId } = this.state;
 
-    
     return (
 
       <div>
