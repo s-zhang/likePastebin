@@ -85,6 +85,45 @@ h1{
 
 
 
+
+.view{
+  margin: 15vh 20vh 0 20vh;
+}
+
+.encryptionLink{
+  margin-bottom: 5vh;
+}
+#link{
+  margin: 0 1vh;
+  width: 45vh;
+}
+
+.infoTop{
+  background-color: #EC6D52;
+  padding: 1vh;
+  height: 3vh;
+}
+.infoDescribe{
+  display: inline-block;
+}
+p{
+  margin: 0;
+  color: white;
+}
+.right{
+  float: right;
+  margin-left: 1vh;
+}
+
+.infoContent{
+  padding: 5vh 10vh;
+  background-color: #edb8ad;
+}
+
+
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

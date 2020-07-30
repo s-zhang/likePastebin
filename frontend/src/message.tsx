@@ -36,25 +36,31 @@ class message extends React.Component<any, any>  {
         </div>
       
 
-        <form action="">
-          <div className="body">
-            <h1>Title</h1>
-            <input id="myTitle"></input>
-            
-            <h1>Text</h1>
-            <textarea ng-model="myTextArea" id="myTextArea" placeholder="Put your message here:)" defaultValue={ this.state.text }></textarea>
-            <br></br>
-            <h3>Link</h3><input type="text" id= "link"></input>
-
-            </div>
-            </form>
-            
-
-            </div>
-            
-
+        <div className="view">
           
+          <div className="encryptionLink">
+            <label>
+              Encrypted Link:
+              <input type="text" id="link"></input>
+              <button id="copy">Copy Link</button>
+            </label>
+            
+          </div>
 
+          <div className="info">
+            <div className="infoTop">
+              <p className="infoDescribe" id="privacyInfo">Private</p>
+              <p className="infoDescribe right" id="expireCountdown">(expiration countdown)</p>
+              <p className="infoDescribe right">Expires: </p>
+            </div>
+            <div className="infoContent">
+              <h1 id="titleInfo">Title</h1>
+              <h5 id="textInfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
     );
   }
 };
