@@ -50,24 +50,32 @@ class Home extends React.Component<any, any>  {
           date = moment(date).add(this.state.expireNumber, 'y')
             break;
         default: break; }
-      expireAt=date.toString()
+      expireAt=date.toISOString()
     }
     console.log(expireAt)
     const data = { 
+      message: this.state.text,
       title: this.state.title,
-      text: this.state.text,
-      privacy: this.state.privacy,
-      expireAt: expireAt,
+      expiration: expireAt,
     }
+
+    fetch('http://localhost:8080/createPaste', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
   }
   
   handleClick() {
-  
+    
+    this.Submit();
     this.setState({
         toMessagePage: true
     });
-    const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
+    //const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
     /*alert(element);
     let keyUtf8 = CryptoJS.enc.Utf8.parse('my-secret-key@123')

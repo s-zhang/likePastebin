@@ -3,11 +3,11 @@ import React, { useState, FormEvent } from 'react';
 import s from './S.png';
 import './App.css';
 import { start } from 'repl';
+import { Redirect } from 'react-router-dom';
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
-const date = new Date();
-console.log(date);
+
 
 class message extends React.Component<any, any>  {
 
@@ -18,6 +18,8 @@ class message extends React.Component<any, any>  {
       text: "",
     };
 
+    this.handleClick= this.handleClick.bind(this)
+
   }
      
   componentDidMount() {
@@ -25,11 +27,6 @@ class message extends React.Component<any, any>  {
     requestHeaders.set('Content-Type', 'application/json',);
 
     // Simple POST request with a JSON body using fetch
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
-    };
     fetch('http://localhost:8080/getPasteDetails?id=Nate')
       
           .then(response => response.json())
@@ -40,27 +37,37 @@ class message extends React.Component<any, any>  {
             }));
   }
 
+  handleClick() {
+    this.setState({
+        toHomePage: true
+    });
+  }
+
 
   render(){
 
     const { postId } = this.state;
     const startTime= Date.now();
     const setExpiration = startTime
+
+    if(this.state.toHomePage) {
+      return <Redirect to="/" />
+  }
                      
     return (
 
       <div>
         <div className="header">
           <img src={s} alt="secure share" className="img2" />
-          <button id="newFormButton"> + New</button>
+          <button onClick={this.handleClick} id="newFormButton"> + New</button>
         </div>
       
 
         <div className="view">
           
-          <div className="encryptionLink">
+          <div className="Link">
             <label>
-              Encrypted Link:
+              Link:
               <input type="text" id="link"></input>
               <button id="copy">Copy Link</button>
             </label>
