@@ -12,19 +12,18 @@ class Home extends React.Component<any, any>  {
   constructor(props: any) {
     super(props);
     this.state = {
-      postId: null,
       title: "",
       text: "",
       privacy: "",
       expiration: "",
       expireNumber: "",
       expireUnit: "minute",
-      toMessagePage: false
+      toMessageID: null
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  Submit(){
+  handleClick(){
     let expireAt
     if(this.state.expiration==="never"){
       expireAt= null
@@ -64,14 +63,18 @@ class Home extends React.Component<any, any>  {
       },
       body: JSON.stringify(data)
     })
+
+    .then(response => response.json())
+    .then(data => this.setState(
+      { 
+         toMessageID: data.id  
+        
+      }));
   }
-  
-  handleClick() {
+
     
-    this.Submit();
-    this.setState({
-        toMessagePage: true
-    });
+  
+
     
     //const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
@@ -97,12 +100,12 @@ class Home extends React.Component<any, any>  {
     alert('decrypted Data -')
     alert(decryptedData); */
     
-  } 
+
 
   render(){
 
-    if(this.state.toMessagePage) {
-        return <Redirect to="/message" />
+    if(this.state.toMessageID  !== null){
+        return <Redirect to={"/message"+this.state.toMessageID} />
     }
     const { postId } = this.state;
 
@@ -116,7 +119,8 @@ class Home extends React.Component<any, any>  {
 
         <form onSubmit={ e => {	
           e.preventDefault()	
-          this.Submit()	
+          this.handleClick()
+
         }}>
           <div className="body">
             <h1>Title</h1>
