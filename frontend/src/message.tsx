@@ -8,6 +8,7 @@ var CryptoJS = require("crypto-js");
 
 
 class Message extends React.Component<any, any>  {
+  linkText: any;
 
   constructor(props: any) {
     super(props);
@@ -27,19 +28,35 @@ class Message extends React.Component<any, any>  {
     requestHeaders.set('Content-Type', 'application/json',);
 
     fetch('http://localhost:8080/getPasteDetails?id=' + window.location.pathname.substring(9))
-      
-          .then(response => response.json())
-          .then(data => this.setState(
-            { 
-            
-              data: data
-            }));
+    
+    .then(response => response.json())
+
+    .then(data => {
+      this.setState(
+        { 
+          data: data
+        })
+    }, ()=> {
+      this.setState({
+        data: {
+          title: "This paste does not exist or has expired",
+          message: "",
+          expiration: "Never",
+        }
+      })
+    })
   }
 
   handleClick() {
     this.setState({
         toHomePage: true
     });
+  }
+
+  copyLink(){
+    const copyText = this.linkText
+    copyText.select()
+    document.execCommand('copy')
   }
 
   render(){
@@ -58,23 +75,23 @@ class Message extends React.Component<any, any>  {
       
         <div className="view">
           
-          <div className="Link">
+          <div className="LinkView">
             <label>
               Link:
-              <input type="text" id="link"></input>
-              <button id="copy">Copy Link</button>
+              <input type="text" id="link" ref={(linkText) => this.linkText = linkText} value="placeholder"></input>
+              <button onClick={() => this.copyLink()} id="copy">Copy Link</button>
             </label>
           </div>
 
           <div className="info">
             <div className="infoTop">
-              <p className="infoDescribe" id="privacyInfo">Private</p>
+              <p className="infoDescribe" id="privacyInfo">Public</p>
               <p className="infoDescribe right" id="expireCountdown">{this.state.data.expiration}</p>
               <p className="infoDescribe right">Expires: </p>
             </div>
             <div className="infoContent">
               <h1 id="titleInfo">{this.state.data.title}</h1>
-              <h5 id="textInfo">{ this.state.data.message }</h5>
+              <p id="textInfo">{ this.state.data.message }</p>
             </div>
           </div>
 

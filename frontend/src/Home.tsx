@@ -26,7 +26,7 @@ class Home extends React.Component<any, any>  {
   handleClick(){
     let expireAt
     if(this.state.expiration==="never"){
-      expireAt= null
+      expireAt= "Never"
     }
     else{
       let date: any = Date.now()
@@ -72,10 +72,6 @@ class Home extends React.Component<any, any>  {
       }));
   }
 
-    
-  
-
-    
     //const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
     /*alert(element);
