@@ -40,7 +40,7 @@ class Message extends React.Component<any, any>  {
       this.setState({
         data: {
           title: "This paste does not exist or has expired",
-          message: "",
+          message: "aaaaaaaaaaaa",
           expiration: "Never",
         }
       })
@@ -91,7 +91,7 @@ class Message extends React.Component<any, any>  {
             </div>
             <div className="infoContent">
               <h1 id="titleInfo">{this.state.data.title}</h1>
-              <h5 id="textInfo">{ this.state.data.message }</h5>
+              <p id="textInfo">{ this.state.data.message }</p>
             </div>
           </div>
 
