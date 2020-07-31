@@ -28,13 +28,23 @@ class Message extends React.Component<any, any>  {
     requestHeaders.set('Content-Type', 'application/json',);
 
     fetch('http://localhost:8080/getPasteDetails?id=' + window.location.pathname.substring(9))
-      
-          .then(response => response.json())
-          .then(data => this.setState(
-            { 
-            
-              data: data
-            }));
+    
+    .then(response => response.json())
+
+    .then(data => {
+      this.setState(
+        { 
+          data: data
+        })
+    }, ()=> {
+      this.setState({
+        data: {
+          title: "This paste does not exist or has expired",
+          message: "",
+          expiration: "Never",
+        }
+      })
+    })
   }
 
   handleClick() {
