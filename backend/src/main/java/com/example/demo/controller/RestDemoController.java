@@ -1,8 +1,16 @@
 package com.example.demo.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
+import com.google.api.client.util.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,14 +26,33 @@ import com.example.demo.service.FirebaseService;
 
 @RestController
 public class RestDemoController {
-	
+
 	@Autowired
 	FirebaseService firebaseService;
-
 	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("/getPasteDetails")
 	public Paste getExample(@RequestParam(value = "id") String id) throws InterruptedException, ExecutionException {
-		return firebaseService.getPasteDetails(id);
+
+
+		Paste displayPaste = new Paste();
+
+		String expiration = firebaseService.getPasteDetails(id).getExpiration();
+
+		LocalDateTime expirationDateTime = LocalDateTime.parse(expiration);
+		LocalDateTime currentLocalTime = LocalDateTime.now();
+
+		int value = currentLocalTime.compareTo(expirationDateTime);
+
+		if(value > 0){
+			firebaseService.deletePaste(id);
+
+			displayPaste = null;
+
+		}else{
+			displayPaste = firebaseService.getPasteDetails(id);
+		}
+		return displayPaste;
 	}
 
 	@PostMapping("/createPaste")

@@ -17,7 +17,7 @@ public class FirebaseService {
 
     public String savePasteDetails(Paste paste) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("pastes").document(paste.getId()).set(paste);
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("pastes").document(paste.getTitle()).set(paste);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
@@ -35,12 +35,12 @@ public class FirebaseService {
             return paste;
         }else {
             return null;
-        }  
+        }
     }
 
     public String updatePasteDetails(Paste paste) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("pastes").document(paste.getId()).set(paste);
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("pastes").document(paste.getTitle()).set(paste);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
