@@ -15,11 +15,7 @@ import com.google.firebase.cloud.FirestoreClient;
 @Service
 public class FirebaseService {
 
-    public String savePasteDetails(Paste paste) throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("pastes").document(paste.getId()).set(paste);
-        return collectionsApiFuture.get().getUpdateTime().toString();
-    }
+
 
     public Paste getPasteDetails(String name) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
@@ -35,13 +31,13 @@ public class FirebaseService {
             return paste;
         }else {
             return null;
-        }  
+        }
     }
 
-    public String updatePasteDetails(Paste paste) throws InterruptedException, ExecutionException {
+    public String savePasteDetails(Paste paste) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("pastes").document(paste.getId()).set(paste);
-        return collectionsApiFuture.get().getUpdateTime().toString();
+        ApiFuture<DocumentReference> collectionsApiFuture = dbFirestore.collection("pastes").add(paste);
+        return collectionsApiFuture.get().getId();
     }
 
     public String deletePaste(String name) {
