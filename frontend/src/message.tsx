@@ -40,7 +40,7 @@ class Message extends React.Component<any, any>  {
       this.setState({
         data: {
           title: "This paste does not exist or has expired",
-          message: "aaaaaaaaaaaa",
+          message: "",
           expiration: "Never",
         }
       })
