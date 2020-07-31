@@ -33,11 +33,8 @@ public class RestDemoController {
 
 	@GetMapping("/getPasteDetails")
 	public Paste getExample(@RequestParam(value = "id") String id) throws InterruptedException, ExecutionException {
-
-
-		Paste displayPaste = new Paste();
-
-		String expiration = firebaseService.getPasteDetails(id).getExpiration();
+		Paste displayPaste = firebaseService.getPasteDetails(id);
+		String expiration = displayPaste.getExpiration();
 
 		LocalDateTime expirationDateTime = LocalDateTime.parse(expiration);
 		LocalDateTime currentLocalTime = LocalDateTime.now();
@@ -46,11 +43,7 @@ public class RestDemoController {
 
 		if(value > 0){
 			firebaseService.deletePaste(id);
-
 			displayPaste = null;
-
-		}else{
-			displayPaste = firebaseService.getPasteDetails(id);
 		}
 		return displayPaste;
 	}
@@ -60,10 +53,6 @@ public class RestDemoController {
 		return firebaseService.savePasteDetails(paste);
 	}
 
-	@PutMapping("/updatePasteDetails")
-	public String putExample(@RequestBody Paste paste) throws InterruptedException, ExecutionException {
-		return firebaseService.updatePasteDetails(paste);
-	}
 
 	@DeleteMapping("/deletePaste")
 	public String deleteExample(@RequestHeader String id) {
