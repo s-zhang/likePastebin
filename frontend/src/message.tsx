@@ -60,7 +60,7 @@ class Message extends React.Component<any, any>  {
       <div>
         <div className="header">
           <img src={s} alt="secure share" className="img2" />
-          <button id="newFormButton"> + New</button>
+          <button onClick={this.handleClick} id="newFormButton"> + New</button>
         </div>
       
         <div className="view">
@@ -75,7 +75,7 @@ class Message extends React.Component<any, any>  {
 
           <div className="info">
             <div className="infoTop">
-              <p className="infoDescribe" id="privacyInfo">Private</p>
+              <p className="infoDescribe" id="privacyInfo">Public</p>
               <p className="infoDescribe right" id="expireCountdown">{this.state.data.expiration}</p>
               <p className="infoDescribe right">Expires: </p>
             </div>

@@ -72,10 +72,6 @@ class Home extends React.Component<any, any>  {
       }));
   }
 
-    
-  
-
-    
     //const element = (document.getElementById('myTextArea') as HTMLInputElement).value;
     
     /*alert(element);
