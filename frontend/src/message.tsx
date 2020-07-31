@@ -8,7 +8,7 @@ var CryptoJS = require("crypto-js");
 
 
 class Message extends React.Component<any, any>  {
-  textArea: any;
+  linkText: any;
 
   constructor(props: any) {
     super(props);
@@ -44,7 +44,7 @@ class Message extends React.Component<any, any>  {
   }
 
   copyLink(){
-    const copyText = this.textArea
+    const copyText = this.linkText
     copyText.select()
     document.execCommand('copy')
   }
@@ -68,7 +68,7 @@ class Message extends React.Component<any, any>  {
           <div className="LinkView">
             <label>
               Link:
-              <input type="text" id="link" ref={(textarea) => this.textArea = textarea} value="placeholder"></input>
+              <input type="text" id="link" ref={(linkText) => this.linkText = linkText} value="placeholder"></input>
               <button onClick={() => this.copyLink()} id="copy">Copy Link</button>
             </label>
           </div>
